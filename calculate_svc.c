@@ -30,37 +30,37 @@ calculate_prog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 	char *(*local)(char *, struct svc_req *);
 
 	switch (rqstp->rq_proc) {
-	case NULLPROC:
-		(void) svc_sendreply (transp, (xdrproc_t) xdr_void, (char *)NULL);
-		return;
+		case NULLPROC:
+			(void) svc_sendreply (transp, (xdrproc_t) xdr_void, (char *)NULL);
+			return;
 
-	case ADD:
-		_xdr_argument = (xdrproc_t) xdr_inputs;
-		_xdr_result = (xdrproc_t) xdr_float;
-		local = (char *(*)(char *, struct svc_req *)) add_1_svc;
-		break;
+		case ADD:
+			_xdr_argument = (xdrproc_t) xdr_inputs;
+			_xdr_result = (xdrproc_t) xdr_float;
+			local = (char *(*)(char *, struct svc_req *)) add_1_svc;
+			break;
 
-	case SUB:
-		_xdr_argument = (xdrproc_t) xdr_inputs;
-		_xdr_result = (xdrproc_t) xdr_float;
-		local = (char *(*)(char *, struct svc_req *)) sub_1_svc;
-		break;
+		case SUB:
+			_xdr_argument = (xdrproc_t) xdr_inputs;
+			_xdr_result = (xdrproc_t) xdr_float;
+			local = (char *(*)(char *, struct svc_req *)) sub_1_svc;
+			break;
 
-	case MUL:
-		_xdr_argument = (xdrproc_t) xdr_inputs;
-		_xdr_result = (xdrproc_t) xdr_float;
-		local = (char *(*)(char *, struct svc_req *)) mul_1_svc;
-		break;
+		case MUL:
+			_xdr_argument = (xdrproc_t) xdr_inputs;
+			_xdr_result = (xdrproc_t) xdr_float;
+			local = (char *(*)(char *, struct svc_req *)) mul_1_svc;
+			break;
 
-	case DIV:
-		_xdr_argument = (xdrproc_t) xdr_inputs;
-		_xdr_result = (xdrproc_t) xdr_float;
-		local = (char *(*)(char *, struct svc_req *)) div_1_svc;
-		break;
+		case DIV:
+			_xdr_argument = (xdrproc_t) xdr_inputs;
+			_xdr_result = (xdrproc_t) xdr_float;
+			local = (char *(*)(char *, struct svc_req *)) div_1_svc;
+			break;
 
-	default:
-		svcerr_noproc (transp);
-		return;
+		default:
+			svcerr_noproc (transp);
+			return;
 	}
 	memset ((char *)&argument, 0, sizeof (argument));
 	if (!svc_getargs (transp, (xdrproc_t) _xdr_argument, (caddr_t) &argument)) {
