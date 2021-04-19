@@ -3,8 +3,8 @@
 
 # Parameters
 
-CLIENT = calculate_client
-SERVER = calculate_server
+CLIENT = calculate_client.app
+SERVER = calculate_server.app
 
 SOURCES_CLNT.c = 
 SOURCES_CLNT.h = 
